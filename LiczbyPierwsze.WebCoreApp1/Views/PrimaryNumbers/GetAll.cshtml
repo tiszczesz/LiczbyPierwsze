@@ -1,0 +1,15 @@
+﻿@model LiczbyPierwsze.WebCoreApp1.Models.PrimaryModel
+
+@{
+    ViewData["Title"] = "Pokaż liczby pierwsze";
+}
+
+<h1 class="alert-dark p-2">Pokaż liczby pierwsze</h1>
+
+<div class="border border-info p-3">
+    Zestawienie liczb pierwszych z przedziału: od @Model.DLimit do  @Model.ULimit <hr>
+    @foreach (int liczba in Model.Numbers)
+    {
+        @liczba <text> &nbsp;</text>
+    }
+</div>
