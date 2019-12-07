@@ -1,4 +1,5 @@
-﻿@model LiczbyPierwsze.WebCoreApp1.Models.MathModel
+﻿@using System.Linq
+@model LiczbyPierwsze.WebCoreApp1.Models.MathModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -18,13 +19,20 @@
             <input asp-for="B" />
             <span asp-validation-for="B" class="text-danger"></span>
         </div>
+        <div class="form-control">
+            <select name="Cities">
+                @foreach (var city in Model.Cities) {
+                    <option value="@city">@city</option>
+                }
+            </select>
+        </div>
         <div>
             <input type="submit" class="btn btn-lg btn-primary p-2" value="Dodaj"/>
         </div>
     </form>
 </div>
 
-@if (Model != null) {
+@if (Model != null ) {
     <div class="badge-info p-4">
         <p class="alert-dark">@Model.A + @Model.B = @Model.Result</p>
         <p>@DateTime.Now.Date.ToLongDateString()</p>

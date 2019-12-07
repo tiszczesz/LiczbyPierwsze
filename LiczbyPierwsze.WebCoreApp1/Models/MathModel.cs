@@ -17,5 +17,7 @@ namespace LiczbyPierwsze.WebCoreApp1.Models
         public decimal B { get; set; }
 
         public decimal Result { get; set; }
+
+        public List<string> Cities { get; set; }
     }
 }

@@ -12,7 +12,9 @@ namespace LiczbyPierwsze.WebCoreApp1.Controllers
         public IActionResult Index()
         {
             MathModel mm = new MathModel();
-            return View();
+
+            mm.Cities = new List<string>(){"Warszawa","Praga","Moskwa","Madryt"};
+            return View(mm);
         }
 
         //POST
