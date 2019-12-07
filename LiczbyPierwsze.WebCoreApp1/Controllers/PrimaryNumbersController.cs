@@ -24,7 +24,7 @@ namespace LiczbyPierwsze.WebCoreApp1.Controllers {
                     pm.ULimit = temp;
                 }
 
-                const int rowWidth = 30;
+                const int rowWidth = 20;
                 int rows = (pm.ULimit - pm.DLimit) / rowWidth + 1;
                 ViewBag.rows = rows;
                 ViewBag.rowWidth = rowWidth;

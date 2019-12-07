@@ -20,7 +20,7 @@
             </div>
             <input type="submit" value="Generuj" class="btn btn-lg btn-dark"/>
         }*@
-
+    @Html.ValidationSummary(false,"błędne dane")
     <form asp-action="Index" asp-controller="PrimaryNumbers" method="post">
         <div class="form-group row">
             <label asp-for="DLimit"></label>
