@@ -3,22 +3,66 @@
     ViewData["Title"] = "liczby pierwsze - Index";
 }
 
-<h1>Liczbvy pierwsze</h1>
+<h1>Liczby pierwsze</h1>
 <div class="badge-info p-2">Witaj z akcji Index kontrolera PrimaryNumbers</div>
 
-<div class="col-lg-8">
-    @using (Html.BeginForm("Index", "PrimaryNumbers", null, FormMethod.Post))
-    {
-        @Html.ValidationSummary(false)
-        <div>
-            @Html.LabelFor(m => m.DLimit)
-            @Html.TextBoxFor(m => m.DLimit)
+<div>
+    @*@using (Html.BeginForm("Index", "PrimaryNumbers", null, FormMethod.Post))
+        {
+            @Html.ValidationSummary(false)
+            <div>
+                @Html.LabelFor(m => m.DLimit)
+                @Html.TextBoxFor(m => m.DLimit)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.ULimit)
+                @Html.TextBoxFor(m => m.ULimit)
+            </div>
+            <input type="submit" value="Generuj" class="btn btn-lg btn-dark"/>
+        }*@
+
+    <form asp-action="Index" asp-controller="PrimaryNumbers" method="post">
+        <div class="form-group row">
+            <label asp-for="DLimit"></label>
+            <input class="form-control" type="number" asp-for="DLimit" />
         </div>
-        <div>
-            @Html.LabelFor(m => m.ULimit)
-            @Html.TextBoxFor(m => m.ULimit)
+
+        <div class="form-group row">
+            <label asp-for="ULimit"></label>
+            <input class="form-control" type="number" asp-for="ULimit" />
         </div>
-        <input type="submit" value="Generuj" class="btn btn-lg btn-dark"/>
-    }
+        <div class="form-group row m-2">
+            <input type="submit" value="Generuj" class="btn btn-lg btn-dark p-2" />
+        </div>
+    </form>
 </div>
+@if (Model != null && Model.Numbers != null && Model.Numbers.Count > 0)
+{
+    <h1 class="alert-dark p-2">Pokaż liczby pierwsze</h1>
+
+    <div class="border border-info p-3">
+        Zestawienie liczb pierwszych z przedziału: od @Model.DLimit do @Model.ULimit <hr>
+        @foreach (int liczba in Model.Numbers)
+        {
+            @:@liczba &nbsp;
+        }
+    </div>
+    <div class="border border-info p-3">
+        <table class="table table-bordered">
+            @{ int licznik = Model.DLimit; }
+            @for (int i = 0; i < ViewBag.rows; i++) {
+                <tr>
+                    @for (int j = 0; j < ViewBag.rowWidth; j++,licznik++) {
+                       
+                        <td>@licznik</td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+}
+
 

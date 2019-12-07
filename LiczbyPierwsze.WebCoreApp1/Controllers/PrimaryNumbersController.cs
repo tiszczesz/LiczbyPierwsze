@@ -17,8 +17,19 @@ namespace LiczbyPierwsze.WebCoreApp1.Controllers {
         [HttpPost]
         public IActionResult Index(PrimaryModel pm) {
             if (ModelState.IsValid) {
+                PrimaryNumbers pn = new PrimaryNumbers();
+                if (pm.ULimit < pm.DLimit) {
+                    int temp = pm.DLimit;
+                    pm.DLimit = pm.ULimit;
+                    pm.ULimit = temp;
+                }
 
-                return View();
+                const int rowWidth = 30;
+                int rows = (pm.ULimit - pm.DLimit) / rowWidth + 1;
+                ViewBag.rows = rows;
+                ViewBag.rowWidth = rowWidth;
+                pm.Numbers = pn.ShowPrimaryNumbers(pm.DLimit, pm.ULimit);
+                return View(pm);
             }
             else {
                 return View(pm);
