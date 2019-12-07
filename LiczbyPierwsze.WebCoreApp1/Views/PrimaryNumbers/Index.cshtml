@@ -1,8 +1,24 @@
-﻿
+﻿@model LiczbyPierwsze.WebCoreApp1.Models.PrimaryModel
 @{
     ViewData["Title"] = "liczby pierwsze - Index";
 }
 
 <h1>Liczbvy pierwsze</h1>
 <div class="badge-info p-2">Witaj z akcji Index kontrolera PrimaryNumbers</div>
+
+<div class="col-lg-8">
+    @using (Html.BeginForm("Index", "PrimaryNumbers", null, FormMethod.Post))
+    {
+        @Html.ValidationSummary(false)
+        <div>
+            @Html.LabelFor(m => m.DLimit)
+            @Html.TextBoxFor(m => m.DLimit)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.ULimit)
+            @Html.TextBoxFor(m => m.ULimit)
+        </div>
+        <input type="submit" value="Generuj" class="btn btn-lg btn-dark"/>
+    }
+</div>
 
