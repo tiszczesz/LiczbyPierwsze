@@ -10,12 +10,12 @@ namespace LiczbyPierwsze.WebCoreApp1.Models
     {
         [Required(ErrorMessage = "Podaj A")]
         [Display(Name = "Podaj liczbę")]
-        public double A { get; set; }
+        public decimal A { get; set; }
 
         [Required(ErrorMessage = "Podaj B")]
         [Display(Name = "Podaj liczbę")]
-        public double B { get; set; }
+        public decimal B { get; set; }
 
-        public double Result { get; set; }
+        public decimal Result { get; set; }
     }
 }
