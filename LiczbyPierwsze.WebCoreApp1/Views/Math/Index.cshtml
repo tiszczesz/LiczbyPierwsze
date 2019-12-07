@@ -1,0 +1,29 @@
+﻿@model LiczbyPierwsze.WebCoreApp1.Models.MathModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div >
+    @Html.ValidationSummary(false)
+    <form asp-controller="Math" asp-action="Index" method="post">
+        <div class="form-control">
+            <label asp-for="A"></label>
+            <input type="number" step="0.01" asp-for="A"/>
+        </div>
+        <div class="form-control">
+            <label asp-for="B"></label>
+            <input type="number" step="0.01" asp-for="B"/>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-lg btn-primary p-2"/>
+        </div>
+    </form>
+</div>
+
+@if (Model != null) {
+    <div class="badge-info p-4">
+        <p class="alert-dark">@Model.A + @Model.B = @Model.Result</p>
+    </div>
+}

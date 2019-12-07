@@ -51,10 +51,11 @@
         <table class="table table-bordered">
             @{ int licznik = Model.DLimit; }
             @for (int i = 0; i < ViewBag.rows; i++) {
+               
                 <tr>
                     @for (int j = 0; j < ViewBag.rowWidth; j++,licznik++) {
-                       
-                        <td>@licznik</td>
+                        string pierwsza = Model.Numbers.Contains(licznik) ? "background-color:red" : "";
+                        <td style=@pierwsza>@licznik</td>
                     }
                 </tr>
             }
