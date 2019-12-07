@@ -6,15 +6,17 @@
 <h1>Index</h1>
 
 <div >
-    @Html.ValidationSummary(false)
+    @*@Html.ValidationSummary(false)*@
     <form asp-controller="Math" asp-action="Index" method="post">
         <div class="form-control">
             <label asp-for="A"></label>
             <input   asp-for="A"/>
+            <span asp-validation-for="A" class="text-danger"></span>
         </div>
         <div class="form-control">
             <label asp-for="B"></label>
-            <input   asp-for="B"/>
+            <input asp-for="B" />
+            <span asp-validation-for="B" class="text-danger"></span>
         </div>
         <div>
             <input type="submit" class="btn btn-lg btn-primary p-2" value="Dodaj"/>
@@ -25,5 +27,6 @@
 @if (Model != null) {
     <div class="badge-info p-4">
         <p class="alert-dark">@Model.A + @Model.B = @Model.Result</p>
+        <p>@DateTime.Now.Date.ToLongDateString()</p>
     </div>
 }
